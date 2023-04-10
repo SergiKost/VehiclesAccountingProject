@@ -1,0 +1,40 @@
+﻿@using System.Collections.Generic
+@using Core.DTOs.AccountViewModels
+@using Core.Entities
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Identity
+@model LoginViewModel
+@inject SignInManager<AspUser> SignInManager
+@*
+    
+*@
+@{
+    ViewData["Title"] = "Вход в систему";
+}
+<div class = "row text-center">
+    <br />
+    <div class = "col-md-4"></div>
+    <div class = "col-md-4 border-shadow">
+        <h2>@ViewData["Title"]</h2>
+        <hr/>
+        <section>
+            <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post" asp-action="Login" asp-controller="Account">
+                <div asp-validation-summary=All class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for=Email></label>
+                    <input asp-for=Email class="form-control" />
+                    <span asp-validation-for=Email class="text-danger" />
+                </div>
+                <div class="form-group">
+                    <label asp-for=Password></label>
+                    <input asp-for=Password class="form-control" />
+                    <span asp-validation-for=Password class="text-danger" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-dark">Войти</button>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div class="col-md-4"></div>
+</div>

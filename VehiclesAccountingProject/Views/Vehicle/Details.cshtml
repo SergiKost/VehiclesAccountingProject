@@ -1,0 +1,120 @@
+﻿@model VehicleDetailsDto;
+@{
+}
+@{
+    ViewData["Title"] = "Подробнее о ТС";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    
+        <form >
+            <div class="text-danger"></div>
+            <h4>Основная информация.</h4>
+            <hr />
+            <table width="95%" cellspacing="0" cellpadding="5">
+                <tr>
+                    <td width="500" valign="top">
+                           <div class="form-group">
+                                @Html.LabelFor(model => model.Name)
+                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Brand)
+                                @Html.TextBoxFor(model => model.Brand, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Model)
+                                @Html.TextBoxFor(model => model.Model, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Type)
+                                @Html.TextBoxFor(model => model.Type, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Color)
+                                @Html.TextBoxFor(model => model.Color, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ChassisNumber)
+                                @Html.TextBoxFor(model => model.ChassisNumber, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ChassisNumber, "", new { @class = "text-danger" })
+                            </div>
+                              <div class="form-group">
+                                @Html.LabelFor(model => model.HullNumber)
+                                @Html.TextBoxFor(model => model.HullNumber, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.HullNumber, "", new { @class = "text-danger" })
+                            </div>
+                              <div class="form-group">
+                                @Html.LabelFor(model => model.RegistPlate)
+                                @Html.TextBoxFor(model => model.RegistPlate, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.RegistPlate, "", new { @class = "text-danger" })
+                            </div>
+                              <div class="form-group">
+                                @Html.LabelFor(model => model.ReleaseYear)
+                                @Html.TextBoxFor(model => model.ReleaseYear, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ReleaseYear, "", new { @class = "text-danger" })
+                            </div>
+                    </td>
+                    <td width="500" valign="top">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EngineName)
+                                @Html.TextBoxFor(model => model.EngineName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.EngineName, "", new { @class = "text-danger" })
+                            </div>
+                              <div class="form-group">
+                                @Html.LabelFor(model => model.EngineNumber)
+                                @Html.TextBoxFor(model => model.EngineNumber, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.EngineNumber, "", new { @class = "text-danger" })
+                            </div>
+                              <div class="form-group">
+                                @Html.LabelFor(model => model.EnginePower)
+                                @Html.TextBoxFor(model => model.EnginePower, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.EnginePower, "", new { @class = "text-danger" })
+                            </div>
+                             <div class="form-group">
+                                @Html.LabelFor(model => model.EngineVolume)
+                                @Html.TextBoxFor(model => model.EngineVolume, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.EngineVolume, "", new { @class = "text-danger" })            
+                             </div>
+                             <div class="form-group">
+                                @Html.LabelFor(model => model.StockMass)
+                                @Html.TextBoxFor(model => model.StockMass, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.StockMass, "", new { @class = "text-danger" })
+                            </div>             
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MaxMass)
+                                @Html.TextBoxFor(model => model.MaxMass, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.MaxMass, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.VINCode)
+                                @Html.TextBoxFor(model => model.VINCode, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.VINCode, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Mileage)
+                                @Html.TextBoxFor(model => model.Mileage, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Mileage, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EnginePetrolId)
+                                @Html.TextBoxFor(model => model.EnginePetrol, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EmployeeId)
+                                @Html.TextBoxFor(model => model.FullNameOfDriver, new { @class = "form-control" })
+                                
+                            </div>
+          
+                    </td>
+                </tr>
+            </table>            
+        </form>   
+</div>

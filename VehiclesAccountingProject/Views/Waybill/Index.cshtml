@@ -1,0 +1,56 @@
+﻿@using Core.DTOs
+@model IEnumerable<WaybillDetailsDto>
+
+@{
+    ViewData["Title"] = "Путевые листы";
+}
+
+<h2>@ViewData["Title"]</h2>
+@if (User.Identity.IsAuthenticated)
+{
+    <p>@User.Identity.Name</p>
+}
+
+<div class="row">
+     <br/>
+        <a asp-action="Create" asp-controller="Waybill">Добавление нового путевого листа</a> 
+        <br/>
+    <div class="table-responsive">
+       
+        <table class="table table-hover table-sm">
+            <tr>
+                <th>Дата отправления</th>
+                <th>Дата прибытия</th>               
+                <th>Сотрудник</th>
+                <th>ТС</th>
+                <th>Цена за литр топлива</th>
+                <th>Город отправления</th>
+                <th>Город прибытия</th>                
+                <th>Начальный уровень топлива</th>
+                <th>Заправлено</th>                
+                <th>Израсходовано</th> 
+                <th>Конечный уровень топлива</th>
+                <th>Стоимость поездки</th>
+               
+            </tr>  
+            @foreach(var waybill in Model)
+            {
+              <tr>
+                 <td>@Html.DisplayFor(modelItem => waybill.DateFrom)</td>
+                 <td>@Html.DisplayFor(modelItem => waybill.DateTo)</td>
+                 <td>@Html.DisplayFor(modelItem => waybill.Employee)</td>
+                 <td>@Html.DisplayFor(modelItem => waybill.Vehicle)</td>
+                 <td>@Html.DisplayFor(modelItem => waybill.RefuelingPrice)</td>
+                 <td>@Html.DisplayFor(modelItem => waybill.CityFrom)</td>
+                 <td>@Html.DisplayFor(modelItem => waybill.CityTo)</td>
+                 <td>@Html.DisplayFor(modelItem => waybill.StartPetrol)</td>
+                 <td>@Html.DisplayFor(modelItem => waybill.PetrolRefueling)</td>
+                 <td>@Html.DisplayFor(modelItem => waybill.PetrolConsumption)</td>
+                 <td>@Html.DisplayFor(modelItem => waybill.FinishPetrol)</td>
+                 <td>@Html.DisplayFor(modelItem => waybill.TotalCost)</td>
+             </tr>
+            }
+           
+       </table>     
+    </div>
+</div>

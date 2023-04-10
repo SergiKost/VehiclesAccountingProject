@@ -1,0 +1,81 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@using Core.DTOs.WaybillViewModels;
+@using Core.DTOs;
+@model AddNewWaybillViewModel;
+
+@{
+    ViewData["Title"] = "Добавление нового путевого листа";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">    
+        <form method="post" asp-controller="Waybill" asp-action="Create">
+            <div asp-validation-summary="All" class="text-danger"></div>            
+            <hr />
+            <table width="95%" cellspacing="0" cellpadding="5">
+                <tr>
+                        <td width="40%" valign="top">
+                               <div class="form-group">
+                                    @Html.LabelFor(model => model.WaybillDetails.CityFrom)
+                                    @Html.TextBoxFor(model => model.WaybillDetails.CityFrom, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.WaybillDetails.CityFrom, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.WaybillDetails.CityTo)
+                                    @Html.TextBoxFor(model => model.WaybillDetails.CityTo, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.WaybillDetails.CityTo, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.WaybillDetails.DateFrom)
+                                    @Html.TextBoxFor(model => model.WaybillDetails.DateFrom, new { @class = "form-control datepicker" })
+                                    @Html.ValidationMessageFor(model => model.WaybillDetails.DateFrom, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.WaybillDetails.DateTo)
+                                    @Html.TextBoxFor(model => model.WaybillDetails.DateTo, new { @class = "form-control datepicker" })
+                                    @Html.ValidationMessageFor(model => model.WaybillDetails.DateTo, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.WaybillDetails.StartPetrol)
+                                    @Html.TextBoxFor(model => model.WaybillDetails.StartPetrol, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.WaybillDetails.StartPetrol, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.WaybillDetails.PetrolRefueling)
+                                    @Html.TextBoxFor(model => model.WaybillDetails.PetrolRefueling, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.WaybillDetails.PetrolRefueling, "", new { @class = "text-danger" })
+                                </div>
+                        </td>
+                        <td width = "60%" valign="top">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.WaybillDetails.PetrolConsumption)
+                                    @Html.TextBoxFor(model => model.WaybillDetails.PetrolConsumption, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.WaybillDetails.PetrolConsumption, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.WaybillDetails.FinishPetrol)
+                                    @Html.TextBoxFor(model => model.WaybillDetails.FinishPetrol, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.WaybillDetails.FinishPetrol, "", new { @class = "text-danger" })
+                                </div>
+                                 <div class="form-group">
+                                    @Html.LabelFor(model => model.WaybillDetails.EmployeeId)
+                                    @Html.DropDownListFor(model => model.WaybillDetails.EmployeeId, new SelectList(Model.EmployeeSimpleModels, "Id", "FullName"), "--список сотрудников--" , new { @class = "form-control"})
+                                </div>
+                                 <div class="form-group">
+                                    @Html.LabelFor(model => model.WaybillDetails.VehicleId)
+                                    @Html.DropDownListFor(model => model.WaybillDetails.VehicleId, new SelectList(Model.VehicleSimplesModels, "Id", "Name"), "--список авто--", new { @class = "form-control"})
+                                </div>
+                                 <div class="form-group">
+                                    @Html.LabelFor(model => model.WaybillDetails.RefuelingPriceId)
+                                    @Html.DropDownListFor(model => model.WaybillDetails.RefuelingPriceId, new SelectList(Model.RpSimpleModels, "Id", "Name"), "--список цен--", new { @class = "form-control"})
+                                </div>
+                        </td>
+                    </tr>
+             </table>
+              <button type="submit" class="btn btn-dark">Добавить</button>
+        </form>
+</div>

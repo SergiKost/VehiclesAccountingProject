@@ -1,0 +1,72 @@
+﻿@using Core.DTOs
+@model IEnumerable<VehicleDto>
+
+@{
+    ViewData["Title"] = "Автотранспортные средства";
+}
+
+<h2>@ViewData["Title"]</h2>
+@if (User.Identity.IsAuthenticated)
+{
+    <p>@User.Identity.Name</p>
+}
+
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-hover table-sm">
+            <thead class="table-info">
+                <tr>
+                    <th>Айди</th>
+                    <th>Наименование</th>               
+                    <th>Марка</th>
+                    <th>Модель</th>
+                    <th>Цвет</th>
+                    <th>Тип</th>
+                    <th>Номер шасси</th>                
+                    <th>Номер двигателя</th>
+                    <th>Тип топлива</th>
+                    <th>ФИО сотрудника-водителя</th> 
+                    <th></th>
+                   @* <th>Номер кузова</th> 
+                    <th>Масса без нагрузки, кг</th> 
+                    <th>Масса под нагрузкой, кг</th>
+                    <th>Пробег</th>
+                    <th>Гос. знак</th>
+                    <th>Год выпуска</th>
+                    <th>VIN-номер ТС</th>*@
+                </tr>
+            </thead>
+                 
+            @foreach (var vehicle in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => vehicle.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => vehicle.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => vehicle.Brand)</td>
+                    <td>@Html.DisplayFor(modelItem => vehicle.Model)</td>
+                    <td>@Html.DisplayFor(modelItem => vehicle.Color)</td>
+                    <td>@Html.DisplayFor(modelItem => vehicle.Type)</td>
+                    <td>@Html.DisplayFor(modelItem => vehicle.ChassisNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => vehicle.Engine)</td>
+                    <td>@Html.DisplayFor(modelItem => vehicle.Petrol)</td>
+                    <td>@Html.DisplayFor(modelItem => vehicle.FullNameOfDriver)</td>
+                  @*  <td>@Html.DisplayFor(modelItem => vehicle.HullNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => vehicle.StockMass)</td>
+                    <td>@Html.DisplayFor(modelItem => vehicle.MaxMass)</td>
+                    <td>@Html.DisplayFor(modelItem => vehicle.Mileage)</td>
+                    <td>@Html.DisplayFor(modelItem => vehicle.RegistPlate)</td>
+                    <td>@Html.DisplayFor(modelItem => vehicle.ReleaseYear)</td>
+                    <td>@Html.DisplayFor(modelItem => vehicle.VINCode)</td>*@
+                    <td>
+                        <form asp-action="Details" asp-controller="Vehicle" asp-route-id="@vehicle.Id">
+                            @*<img src="icons/details.png" alt="" />*@                            
+                            <input data-tooltip="Тут детали" type="image" src="icons/details.png" alt="submit" width="48" height="48"/>
+                            @*<span class="btn-details"></span>*@
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    
+</div>

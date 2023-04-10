@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using Core.DTOs
+@model IEnumerable<RefuelingPriceDto>
+
+@{
+    ViewData["Title"] = "Список цен на топливо в различные периоды";
+}
+
+<div>
+      <table class="table table-hover table-sm">
+            <tr class=table-primary>
+                <th>Айдишечка</th>
+                <th>Дата начала действия цены</th>
+                <th>Дата окончания действия цены</th>               
+                <th>Тип топлива</th>               
+                <th>Цена за литр топлива</th>                               
+            </tr>  
+            @foreach(var refuelingPriceDto in Model)
+            {
+              <tr>
+                 <td>@Html.DisplayFor(modelItem => refuelingPriceDto.Id)</td>
+                 <td>@Html.DisplayFor(modelItem => refuelingPriceDto.DateFrom)</td>
+                 <td>@Html.DisplayFor(modelItem => refuelingPriceDto.DateTo)</td>
+                 <td>@Html.DisplayFor(modelItem => refuelingPriceDto.PetrolType)</td>
+                 <td>@Html.DisplayFor(modelItem => refuelingPriceDto.PetrolPrice)</td>                
+             </tr>
+            }           
+       </table>     
+</div>
