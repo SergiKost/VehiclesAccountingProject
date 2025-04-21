@@ -6,6 +6,7 @@ using Core.Entities;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Infrastructure.Data
 {
@@ -71,6 +72,24 @@ namespace Infrastructure.Data
                     }
                 }
                
+                await context.SaveChangesAsync();
+
+                if (await userManager.FindByEmailAsync(aspUser1.Email) != null)
+                {
+                    var aspUserId = await Task.Run(() => userManager.FindByEmailAsync(aspUser1.Email).Result.Id);
+                    Employee userUpdated1 = await Task.Run(() => context.Employees.FirstOrDefault(e => e.Id == empl1.Id));
+                    userUpdated1.AspUserId = aspUserId;
+                    await Task.Run(() => context.Update<Employee>(userUpdated1));
+                }
+
+                if (await userManager.FindByEmailAsync(aspUser2.Email) != null)
+                {
+                    var aspUserId = await Task.Run(() => userManager.FindByEmailAsync(aspUser2.Email).Result.Id);
+                    Employee userUpdated2 = await Task.Run(() => context.Employees.FirstOrDefault(e => e.Id == empl2.Id));
+                    userUpdated2.AspUserId = aspUserId;
+                    await Task.Run(() => context.Update<Employee>(userUpdated2));
+                }
+
                 await context.SaveChangesAsync();
             }
 
